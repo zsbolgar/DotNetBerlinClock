@@ -12,6 +12,9 @@ namespace BerlinClock.Classes
 
         public string convertTime(string aTime)
         {
+            if(aTime == null)
+                throw  new ArgumentNullException(nameof(aTime));
+
             //if the method is not called from a step definition with an appropriate parameter matching rule
             if (! Regex.IsMatch(aTime, @"^(?:[01]\d|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)$|^(?:24:00:00)$"))
                 throw new FormatException($"{aTime} has invalid format. The valid format is: HH:mm:ss");
